@@ -1,0 +1,69 @@
+<template>
+  <div class="card p-4">
+    <div class="flex justify-between items-start">
+      <div class="flex-1">
+        <div class="flex items-center gap-3 mb-2">
+          <div 
+            class="w-2 h-2 rounded-full"
+            :style="{ backgroundColor: lineColor }"
+          ></div>
+          <h3 class="font-medium">{{ station.StationName }}</h3>
+        </div>
+        
+        <div 
+          class="flex items-center gap-2 text-sm"
+          :class="{'text-green-600': isArrivingSoon}"
+        >
+          <i class="fas fa-train"></i>
+          <span>{{ nextTrainInfo }}</span>
+        </div>
+      </div>
+
+      <button 
+        class="p-2 transition-colors"
+        :class="isFavorite ? 'text-yellow-500' : 'text-gray-400 hover:text-yellow-500'"
+        @click="toggleFavorite"
+      >
+        <i class="fas fa-star"></i>
+      </button>
+    </div>
+
+    <div class="mt-3 pt-3 border-t border-gray-100">
+      <div class="grid grid-cols-3 gap-4 text-sm text-gray-500">
+        <div v-for="train in nextTrains" :key="train.Time">
+          <div class="text-xs">{{ train.Time }}</div>
+          <div class="truncate">往{{ train.destination }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { Station, TrainInfo } from '@/types/metro'
+import { computed } from 'vue'
+import { useFavoriteStore } from '@/stores/favorite'
+
+const props = defineProps<{
+  station: Station
+  lineColor: string
+  nextTrains: TrainInfo[]
+}>()
+
+const favoriteStore = useFavoriteStore()
+const isFavorite = computed(() => favoriteStore.isFavorite(props.station.StationCode))
+
+function toggleFavorite() {
+  favoriteStore.toggleFavorite(props.station)
+}
+
+const isArrivingSoon = computed(() => {
+  return props.nextTrains[0]?.arrivalTime === '即將到站'
+})
+
+const nextTrainInfo = computed(() => {
+  if (!props.nextTrains.length) return '目前無班次'
+  const next = props.nextTrains[0]
+  return `往${next.destination} - ${next.arrivalTime}`
+})
+</script> 

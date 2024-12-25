@@ -1,0 +1,14 @@
+:root {
+  /* 捷運路線顏色 */
+  --metro-blue: #0070BD;
+  --metro-red: #E3002C;
+  --metro-green: #008659;
+  --metro-orange: #F8B61C;
+
+  /* 系統顏色 */
+  --bg-primary: #F5F5F5;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+} 

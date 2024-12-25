@@ -1,0 +1,28 @@
+/* 安全區域相關 */
+.safe-area {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 頁面佈局 */
+.page-container {
+  @apply min-h-screen bg-gray-50;
+}
+
+/* 頁面內容 */
+.page-content {
+  @apply px-4 pb-[calc(4rem+env(safe-area-inset-bottom))];
+  margin-top: calc(56px + env(safe-area-inset-top));
+}
+
+/* 頁面頭部 */
+.page-header {
+  @apply fixed top-0 w-full bg-white z-50 shadow-sm;
+  height: calc(56px + env(safe-area-inset-top));
+}
+
+/* 頁面底部 */
+.page-footer {
+  @apply fixed bottom-0 w-full bg-white border-t border-gray-100 z-50;
+  padding-bottom: env(safe-area-inset-bottom);
+} 

@@ -1,0 +1,30 @@
+/* 卡片樣式 */
+.card {
+  @apply bg-white rounded-2xl shadow-sm transition-all;
+}
+
+/* 按鈕樣式 */
+.btn {
+  @apply px-4 py-2 rounded-xl transition-all;
+}
+
+/* 輸入框樣式 */
+.input {
+  @apply w-full px-4 py-3 rounded-xl bg-gray-50 
+         focus:bg-white focus:ring-2 focus:outline-none 
+         transition-all;
+}
+
+/* Ring 顏色 */
+.ring-metro-blue {
+  --tw-ring-color: var(--metro-blue);
+}
+.ring-metro-red {
+  --tw-ring-color: var(--metro-red);
+}
+.ring-metro-green {
+  --tw-ring-color: var(--metro-green);
+}
+.ring-metro-orange {
+  --tw-ring-color: var(--metro-orange);
+} 
