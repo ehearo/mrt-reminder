@@ -40,3 +40,12 @@
 ## 👨‍💻 開發者
 
 - ehearo
+
+## 🚀 部署資訊
+
+本專案使用 GitHub Pages 部署，自動化部署流程：
+- 推送到 main 分支會觸發部署
+- 使用 GitHub Actions 自動建置
+- 部署到 gh-pages 分支
+
+訪問網址：https://你的網域/
