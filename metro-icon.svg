@@ -1,1 +1,10 @@
- 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- 背景 -->
+  <rect width="180" height="180" fill="#0070BD"/>
+  
+  <!-- 字母 M -->
+  <path d="M45 60V140H65V90L90 120H100L125 90V140H145V60H125L90 100L55 60H45Z" fill="white"/>
+  
+  <!-- 底部軌道線 -->
+  <rect x="35" y="145" width="110" height="10" rx="5" fill="white"/>
+</svg> 
