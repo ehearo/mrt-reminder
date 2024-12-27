@@ -2,15 +2,6 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <script type="text/javascript">
-      (function(){
-        const redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
     <link rel="icon" type="image/svg+xml" href="./metro-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>台北捷運即時資訊</title>
@@ -38,15 +29,24 @@
     
     <!-- 使用 HTTPS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script type="module" crossorigin src="/wwwroot/js/index.8al1WVfm.js"></script>
-    <link rel="modulepreload" crossorigin href="/wwwroot/js/utils.38wwHZRC.js">
-    <link rel="modulepreload" crossorigin href="/wwwroot/js/components.CBL05WEP.js">
-    <link rel="modulepreload" crossorigin href="/wwwroot/js/views.Dg4Tf319.js">
-    <link rel="modulepreload" crossorigin href="/wwwroot/js/index.8al1WVfm.js">
-    <link rel="modulepreload" crossorigin href="/wwwroot/js/vendor.BCzENQ2o.js">
-    <link rel="stylesheet" crossorigin href="/static/css/style.jCVNspzD.css">
+    <script type="module" crossorigin src="/mrt-reminder/wwwroot/js/index.DLR8B3YO.js"></script>
+    <link rel="modulepreload" crossorigin href="/mrt-reminder/wwwroot/js/utils.CvKzuleA.js">
+    <link rel="modulepreload" crossorigin href="/mrt-reminder/wwwroot/js/components.C3SV8qqC.js">
+    <link rel="modulepreload" crossorigin href="/mrt-reminder/wwwroot/js/views.DNVTq4bA.js">
+    <link rel="modulepreload" crossorigin href="/mrt-reminder/wwwroot/js/index.DLR8B3YO.js">
+    <link rel="modulepreload" crossorigin href="/mrt-reminder/wwwroot/js/vendor.DF4QQC54.js">
+    <link rel="stylesheet" crossorigin href="/mrt-reminder/static/css/style.jCVNspzD.css">
   </head>
   <body>
+    <script>
+      (function(){
+        let redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <div id="app"></div>
   </body>
 </html>
