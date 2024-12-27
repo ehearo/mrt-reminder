@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import { useFavoriteStore } from '@/stores/favorite'
 import { getNextTrains, getLineFromStationCode } from '@/services/stationService'
 import type { MetroLine } from '@/types/metro'
@@ -46,4 +46,21 @@ function getLineColor(stationCode: string): string {
   const line = getLineFromStationCode(stationCode)
   return lineColors[line]
 }
+
+// 添加自動更新功能
+let timer: number
+onMounted(() => {
+  timer = window.setInterval(() => {
+    if (favoriteStations.value.length > 0) {
+      // 強制更新收藏站點的時刻表
+      favoriteStore.$patch({ stations: [...favoriteStore.stations] })
+    }
+  }, 30000)
+})
+
+onUnmounted(() => {
+  if (timer) {
+    window.clearInterval(timer)
+  }
+})
 </script> 

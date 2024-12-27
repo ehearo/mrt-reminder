@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -12,21 +12,14 @@ const router = createRouter({
     {
       path: '/favorites',
       name: 'favorites',
-      component: () => import('@/views/FavoritesView.vue')
+      component: () => import(/* @vite-ignore */ '@/views/FavoritesView.vue')
     },
     {
       path: '/map',
       name: 'map',
-      component: () => import('@/views/MapView.vue')
+      component: () => import(/* @vite-ignore */ '@/views/MapView.vue')
     }
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
-  }
+  ]
 })
 
 export default router 

@@ -91,11 +91,15 @@ export function getAvailableLines(): LineInfo[] {
 /**
  * 根據路線獲取站點時刻表
  */
-export async function fetchStationTimetable(line: MetroLine = ''): Promise<Station[]> {
-    if (!line) {
-        return Object.values(LINE_STATIONS).flatMap(l => l.stations);
-    }
-    return LINE_STATIONS[line]?.stations || [];
+export async function fetchStationTimetable(line: MetroLine): Promise<Station[]> {
+    const lineInfo = LINE_STATIONS[line]
+    if (!lineInfo) return []
+    
+    return lineInfo.stations.map(station => ({
+        ...station,
+        LineColor: lineInfo.color,
+        LineName: lineInfo.name
+    }))
 }
 
 /**
@@ -105,29 +109,30 @@ export function getNextTrains(stationCode: string): TrainInfo[] {
     const line = getLineFromStationCode(stationCode);
     const station = LINE_STATIONS[line]?.stations.find(s => s.StationCode === stationCode);
     
-    if (!station) return [];
+    if (!station?.Timetables) return [];
 
     const now = new Date();
     const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     const trains: TrainInfo[] = [];
 
     for (const timetable of station.Timetables) {
-        for (const schedule of timetable.Schedule) {
-            if (!isOperatingTime(schedule)) continue;
-
-            for (const departure of schedule.Departures) {
-                if (departure.Time > currentTime) {
-                    trains.push({
-                        Dst: departure.Dst,
-                        Time: departure.Time,
-                        arrivalTime: calculateArrivalTime(departure.Time),
-                        destination: departure.Dst
-                    });
-                }
+        // 獲取當前時段的時刻表
+        const validSchedules = timetable.Schedule.filter(schedule => isOperatingTime(schedule));
+        
+        for (const schedule of validSchedules) {
+            const departures = schedule.Departures.filter(dep => dep.Time > currentTime);
+            for (const departure of departures) {
+                trains.push({
+                    Dst: departure.Dst,
+                    Time: departure.Time,
+                    arrivalTime: calculateArrivalTime(departure.Time),
+                    destination: departure.Dst
+                });
             }
         }
     }
 
+    // 排序並只返回最近的 3 班車
     return trains
         .sort((a, b) => a.Time.localeCompare(b.Time))
         .slice(0, 3);
@@ -139,21 +144,24 @@ export function getNextTrains(stationCode: string): TrainInfo[] {
 function calculateArrivalTime(time: string): string {
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
-    const arrival = new Date();
+    const arrival = new Date(now);  // 創建新的日期對象
     arrival.setHours(hours, minutes, 0);
 
+    // 如果時間已過，假設是明天的班次
     if (arrival < now) {
         arrival.setDate(arrival.getDate() + 1);
     }
 
     const diffMinutes = Math.floor((arrival.getTime() - now.getTime()) / 60000);
     
-    if (diffMinutes <= 0) return '即將到站';
+    if (diffMinutes <= 1) return '即將到站';
     if (diffMinutes < 60) return `${diffMinutes}分鐘`;
     
     const hours_diff = Math.floor(diffMinutes / 60);
     const minutes_diff = diffMinutes % 60;
-    return `${hours_diff}小時${minutes_diff}分鐘`;
+    return minutes_diff > 0 
+        ? `${hours_diff}小時${minutes_diff}分鐘`
+        : `${hours_diff}小時`;
 }
 
 /**
@@ -164,3 +172,33 @@ function isOperatingTime(schedule: Station['Timetables'][0]['Schedule'][0]): boo
     const today = now.getDay().toString();
     return schedule.Days.includes(today);
 } 
+
+// 根據站點代碼獲取路線顏色
+export function getLineColorByStation(stationCode: string): string {
+    // 從所有路線中找到包含該站點的路線
+    for (const [_, lineInfo] of Object.entries(LINE_STATIONS)) {
+        if (lineInfo.stations.some(s => s.StationCode === stationCode)) {
+            return lineInfo.color
+        }
+    }
+    return '#000000'
+}
+
+// 獲取所有站點
+export async function getAllStations(): Promise<Station[]> {
+    // 從所有路線中獲取所有站點，並保留路線資訊
+    const allStations = Object.entries(LINE_STATIONS).flatMap(([_, lineInfo]) => 
+        lineInfo.stations.map(station => ({
+            ...station,
+            LineColor: lineInfo.color,
+            LineName: lineInfo.name
+        }))
+    )
+    
+    // 按站點名稱和代碼排序
+    return allStations.sort((a, b) => {
+        const nameCompare = a.StationName.localeCompare(b.StationName)
+        if (nameCompare !== 0) return nameCompare
+        return a.StationCode.localeCompare(b.StationCode)
+    })
+}

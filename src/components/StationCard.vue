@@ -5,9 +5,18 @@
         <div class="flex items-center gap-3 mb-2">
           <div 
             class="w-2 h-2 rounded-full"
-            :style="{ backgroundColor: lineColor }"
+            :style="{ backgroundColor: station.LineColor || lineColor }"
           ></div>
-          <h3 class="font-medium">{{ station.StationName }}</h3>
+          <div class="flex items-center gap-2">
+            <h3 class="font-medium">{{ station.StationName }}</h3>
+            <span 
+              v-if="station.LineName" 
+              class="text-sm px-2 py-0.5 rounded-full text-white"
+              :style="{ backgroundColor: station.LineColor || lineColor }"
+            >
+              {{ station.LineName }}
+            </span>
+          </div>
         </div>
         
         <div 
@@ -46,7 +55,7 @@ import { useFavoriteStore } from '@/stores/favorite'
 
 const props = defineProps<{
   station: Station
-  lineColor: string
+  lineColor?: string
   nextTrains: TrainInfo[]
 }>()
 

@@ -10,7 +10,9 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
-    "sourceMap": true,
+    "sourceMap": false,
+    "allowJs": false,
+    "checkJs": false,
     "baseUrl": ".",
     "types": [
       "vite/client",
@@ -19,18 +21,21 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "noEmit": true,
+    "isolatedModules": true
   },
   "include": [
-    "src/**/*",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/vue-shims.d.ts"
+    "src/**/*.vue"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.vue.js"
   ]
 }

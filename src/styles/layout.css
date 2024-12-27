@@ -12,7 +12,7 @@
 /* 頁面內容 */
 .page-content {
   @apply px-4 pb-[calc(4rem+env(safe-area-inset-bottom))];
-  margin-top: calc(56px + env(safe-area-inset-top));
+  margin-top: calc(64px + env(safe-area-inset-top));
 }
 
 /* 頁面頭部 */
@@ -25,4 +25,5 @@
 .page-footer {
   @apply fixed bottom-0 w-full bg-white border-t border-gray-100 z-50;
   padding-bottom: env(safe-area-inset-bottom);
+  height: calc(3.5rem + env(safe-area-inset-bottom));
 } 
