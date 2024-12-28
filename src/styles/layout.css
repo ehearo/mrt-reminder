@@ -11,14 +11,15 @@
 
 /* 頁面內容 */
 .page-content {
-  @apply px-4 pb-[calc(4rem+env(safe-area-inset-bottom))];
-  margin-top: calc(64px + env(safe-area-inset-top));
+  @apply px-4 pb-[calc(4rem+env(safe-area-inset-bottom))] pt-2;
+  margin-top: calc(54px + env(safe-area-inset-top));
 }
 
 /* 頁面頭部 */
 .page-header {
-  @apply fixed top-0 w-full bg-white z-50 shadow-sm;
-  height: calc(56px + env(safe-area-inset-top));
+  @apply fixed top-0 left-0 right-0 bg-white z-50 shadow-sm;
+  padding-top: env(safe-area-inset-top);
+  height: 54px;
 }
 
 /* 頁面底部 */
