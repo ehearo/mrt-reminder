@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# 允許所有靜態資源
+Allow: /assets/
+Allow: /img/
+Allow: /css/
+Allow: /js/
+
+# 指定 Sitemap 位置
+Sitemap: https://metro-taipei.site/sitemap.xml 

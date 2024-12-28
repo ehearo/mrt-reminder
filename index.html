@@ -4,11 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/img/metro-logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>台北捷運即時資訊</title>
+    <title>台北捷運即時動態查詢 | 捷運時刻表 | 捷運到站時間查詢</title>
     
-    <!-- SEO 相關 -->
-    <meta name="description" content="台北捷運即時資訊查詢系統，提供車站時刻表和收藏功能">
-    <link rel="canonical" href="https://metro-taipei.site">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="台北捷運即時動態查詢系統，提供台北車站、板橋站、市政府站即時到站時間查詢。快速查詢板南線、淡水信義線、松山新店線、中和新蘆線時刻表，轉乘資訊即時掌握。">
+    <meta name="keywords" content="台北捷運,捷運時刻表,捷運到站時間,台北車站,板橋站,市政府站,板南線,淡水信義線,松山新店線,中和新蘆線,捷運轉乘,台北捷運app,捷運查詢,即時動態">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://metro-taipei.site/">
+    <meta property="og:title" content="台北捷運即時動態查詢 | 時刻表 | 路線圖">
+    <meta property="og:description" content="即時查詢台北捷運各站到站時間、轉乘資訊，讓您的通勤更便利。支援台北車站、板橋站、市政府站等熱門站點查詢。">
+    <meta property="og:image" content="/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="台北捷運即時動態查詢 | 捷運時刻表">
+    <meta name="twitter:description" content="即時查詢台北捷運各站到站時間、轉乘資訊。提供台北車站、板橋站、市政府站等熱門站點即時動態。">
+    <meta name="twitter:image" content="/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
     <!-- 強制 HTTPS -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https: 'unsafe-inline' 'unsafe-eval'">
@@ -29,6 +46,28 @@
     
     <!-- 使用 HTTPS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Google Search Console 驗證 -->
+    <meta name="google-site-verification" content="ILlWrwdFzxoec62-Li9t9UpGTZHw3F21QoIsLBjFXCU" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSN4XE8ME6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GSN4XE8ME6');
+    </script>
+
+    <!-- 添加語言標記 -->
+    <meta http-equiv="content-language" content="zh-TW">
+    
+    <!-- 添加作者資訊 -->
+    <meta name="author" content="Metro Taipei">
+
+    <link rel="canonical" href="https://metro-taipei.site/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/" />
+    <meta name="robots" content="index, follow" />
   </head>
   <body>
     <script>
@@ -42,5 +81,40 @@
     </script>
     <div id="app"></div>
     <script type="module" src="./src/main.ts"></script>
+    <!-- 結構化數據 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "台北捷運即時動態查詢",
+      "description": "台北捷運即時動態查詢系統",
+      "applicationCategory": "TransitApplication",
+      "operatingSystem": "All",
+      "url": "https://metro-taipei.site",
+      "author": {
+        "@type": "Organization",
+        "name": "Metro Taipei",
+        "url": "https://metro-taipei.site"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD"
+      },
+      "mainEntity": {
+        "@type": "WebSite",
+        "name": "台北捷運即時動態查詢",
+        "url": "https://metro-taipei.site",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://metro-taipei.site/search?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    }
+    </script>
   </body>
 </html>

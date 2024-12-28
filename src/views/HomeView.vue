@@ -2,21 +2,27 @@
   <div class="page-container safe-area">
     <MetroHeader />
     
-    <main class="page-content">
+    <main class="page-content" role="main">
       <!-- 搜尋組件 -->
-      <StationSearch v-model:stations="searchResults" />
+      <section aria-label="站點搜尋">
+        <StationSearch v-model:stations="searchResults" />
+      </section>
 
       <!-- 路線選擇器 -->
-      <div class="mb-6" v-if="!searchResults.length">
+      <section aria-label="捷運路線" v-if="!searchResults.length">
         <LineSelector
           :lines="lines"
           v-model="selectedLine"
           @select="handleLineSelect"
         />
-      </div>
+      </section>
 
       <!-- 站點列表 -->
-      <div v-if="displayStations.length" class="space-y-3">
+      <section 
+        v-if="displayStations.length" 
+        class="space-y-3"
+        aria-label="站點列表"
+      >
         <StationCard
           v-for="station in displayStations"
           :key="station.StationCode"
@@ -25,15 +31,19 @@
           :next-trains="getNextTrains(station.StationCode)"
           @toggle-favorite="toggleFavorite(station.StationCode)"
         />
-      </div>
+      </section>
 
       <!-- 無搜尋結果 -->
-      <div v-else-if="searchResults.length === 0 && !selectedLine" class="text-center py-12">
+      <section 
+        v-else-if="searchResults.length === 0 && !selectedLine" 
+        class="text-center py-12"
+        aria-label="提示訊息"
+      >
         <div class="bg-white rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-          <i class="fas fa-subway text-2xl text-gray-400"></i>
+          <i class="fas fa-subway text-2xl text-gray-400" aria-hidden="true"></i>
         </div>
         <p class="text-gray-500">請搜尋站點或選擇捷運路線</p>
-      </div>
+      </section>
     </main>
 
     <MetroNav />

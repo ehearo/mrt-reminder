@@ -1,11 +1,24 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import fs from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    {
+      name: 'copy-google-verification',
+      closeBundle() {
+        // 複製 Google 驗證檔案
+        fs.copyFileSync(
+          'google029c6a69d63c4f47.html',
+          'dist/google029c6a69d63c4f47.html'
+        )
+      }
+    }
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -59,6 +72,10 @@ export default defineConfig({
       format: {
         comments: false
       }
-    }
-  }
+    },
+    // 確保 HTML 檔案被正確複製
+    copyPublicDir: true
+  },
+  // 確保靜態檔案處理
+  publicDir: 'public'
 })
