@@ -1,20 +1,24 @@
 <template>
-  <div class="mb-6 relative">
+  <div class="mb-6 relative flex items-center bg-white rounded-full shadow-sm">
+    <!-- 放大鏡圖標 -->
+    <div class="flex items-center justify-center pl-4">
+      <i class="fas fa-search text-gray-400"></i>
+    </div>
+
+    <!-- 搜尋輸入框 -->
     <input 
       v-model="query"
       type="text" 
       placeholder="搜尋站點" 
-      class="input pl-14 pr-12 placeholder:pl-1"
+      class="w-full py-2 px-3 bg-transparent focus:outline-none"
       @input="handleSearch"
     >
-    <div class="absolute left-5 top-0 bottom-0 flex items-center justify-center w-4">
-      <i class="fas fa-search text-gray-400"></i>
-    </div>
+
     <!-- 清空按鈕 -->
     <button 
       v-if="query"
       @click="clearSearch"
-      class="absolute right-4 top-0 bottom-0 flex items-center justify-center w-8"
+      class="flex items-center justify-center w-8 pr-4"
     >
       <i class="fas fa-times text-gray-400 hover:text-gray-600"></i>
     </button>
@@ -47,8 +51,7 @@ function handleSearch() {
   }
 
   const filtered = allStations.value.filter(station => 
-    station.StationName.toLowerCase().includes(searchText) ||
-    station.StationCode.toLowerCase().includes(searchText)
+    station.StationName.toLowerCase().includes(searchText)
   )
   emit('update:stations', filtered)
 }
