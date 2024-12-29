@@ -15,6 +15,15 @@ module.exports = {
       './src/**/*.{vue,js,ts,jsx,tsx}',
       './index.html',
     ],
+    options: {
+      safelist: [
+        'safe-area',
+        'page-container',
+        'page-content',
+        'page-header',
+        'page-footer'
+      ]
+    }
   }
 }
 

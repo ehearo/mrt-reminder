@@ -53,13 +53,27 @@
     <!-- Google Search Console 驗證 -->
     <meta name="google-site-verification" content="ILlWrwdFzxoec62-Li9t9UpGTZHw3F21QoIsLBjFXCU" />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSN4XE8ME6"></script>
+    <!-- 延遲載入 Google Analytics -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GSN4XE8ME6');
+      // 等待頁面完全載入後再載入 GA
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-GSN4XE8ME6';
+          script.async = true;
+          document.head.appendChild(script);
+          
+          script.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GSN4XE8ME6', {
+              transport_type: 'beacon',
+              send_page_view: false
+            });
+          };
+        }, 2000);  // 延遲 2 秒載入
+      });
     </script>
 
     <!-- 添加語言標記 -->
@@ -73,7 +87,14 @@
     <meta name="robots" content="index, follow" />
 
     <!-- 預載關鍵資源 -->
-    <link rel="preload" href="/img/metro-logo.svg" as="image">
+    <link rel="preload" href="/img/metro-logo.svg" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- 使用 HTTPS CDN -->
+    <link rel="preload" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+          as="style" 
+          onload="this.onload=null;this.rel='stylesheet'">
   </head>
   <body>
     <script>

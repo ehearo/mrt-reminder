@@ -62,7 +62,9 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log'],
+        passes: 2
       }
     },
     // 確保 HTML 檔案被正確複製
@@ -72,6 +74,7 @@ export default defineConfig({
   publicDir: 'public',
   // 優化依賴預構建
   optimizeDeps: {
-    include: ['vue', 'vue-router', 'pinia']
+    include: ['vue', 'vue-router', 'pinia'],
+    exclude: ['@vueuse/core']
   }
 })
