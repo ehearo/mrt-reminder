@@ -169,7 +169,9 @@ function calculateArrivalTime(time: string): string {
  */
 function isOperatingTime(schedule: Station['Timetables'][0]['Schedule'][0]): boolean {
     const now = new Date();
-    const today = now.getDay().toString();
+    const dayNum = now.getDay();
+    // 將週日的 0 轉換為 "7"，其他日期保持不變
+    const today = dayNum === 0 ? "7" : dayNum.toString();
     return schedule.Days.includes(today);
 } 
 
