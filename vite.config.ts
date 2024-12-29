@@ -33,6 +33,8 @@ export default defineConfig({
     sourcemap: false,
     // 禁用生成 .vue.js 文件
     cssCodeSplit: true,
+    // 優化建構
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         // 分割 vendor
