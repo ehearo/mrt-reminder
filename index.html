@@ -44,8 +44,11 @@
     <!-- 啟動畫面 -->
     <link rel="apple-touch-startup-image" href="/img/metro-splash.png">
     
-    <!-- 使用 HTTPS CDN -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- 延遲載入非關鍵 CSS -->
+    <link rel="preload" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+          as="style" 
+          onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </noscript>
@@ -88,13 +91,7 @@
 
     <!-- 預載關鍵資源 -->
     <link rel="preload" href="/img/metro-logo.svg" as="image" fetchpriority="high">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- 使用 HTTPS CDN -->
-    <link rel="preload" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
-          as="style" 
-          onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <script type="module" crossorigin src="/assets/js/index.BcbY-YwE.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/js/vendor.6Efldxgj.js">
     <link rel="stylesheet" crossorigin href="/assets/css/index.964Id-q8.css">
