@@ -45,16 +45,19 @@
     <link rel="apple-touch-startup-image" href="/img/metro-splash.png">
     
     <!-- 預載關鍵資源 -->
+    <link rel="modulepreload" href="/assets/js/vendor.js">
+    <link rel="modulepreload" href="/assets/js/core.js">
     <link rel="preload" href="/img/metro-logo.svg" as="image">
-    <link rel="preload" href="/img/metro-logo.webp" as="image" type="image/webp">
     <link rel="preload" href="/assets/css/main.css" as="style">
-    <link rel="preload" href="/assets/js/vendor.js" as="script">
     
     <!-- 延遲載入非關鍵 CSS -->
     <link rel="preload" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
           as="style" 
           onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- 延遲載入非關鍵 JS -->
+    <link rel="prefetch" href="/assets/js/search.js">
     
     <!-- 預連接第三方域名 -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -81,8 +84,10 @@
     <link rel="canonical" href="https://metro-taipei.site/" />
     <link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/" />
     <meta name="robots" content="index, follow" />
-    <script type="module" crossorigin src="/assets/js/index.Btv7smgm.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/js/vendor.BCoZ0JB6.js">
+    <script type="module" crossorigin src="/assets/js/index.C2Iaq7nn.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/js/vendor.NdT1UefR.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/search.Dl283LNl.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/core.BsJsY7pZ.js">
     <link rel="stylesheet" crossorigin href="/assets/css/index.964Id-q8.css">
   </head>
   <body>
