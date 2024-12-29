@@ -1,24 +1,29 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        'metro-blue': 'var(--metro-blue)',
-        'metro-red': 'var(--metro-red)',
-        'metro-green': 'var(--metro-green)',
-        'metro-orange': 'var(--metro-orange)',
-      }
-    },
+    extend: {},
   },
-  safelist: [
-    'ring-metro-blue',
-    'ring-metro-red',
-    'ring-metro-green',
-    'ring-metro-orange',
-  ]
+  plugins: [],
+  // 移除未使用的樣式
+  purge: {
+    enabled: true,
+    content: [
+      './src/**/*.{vue,js,ts,jsx,tsx}',
+      './index.html',
+    ],
+    options: {
+      safelist: [
+        'safe-area',
+        'page-container',
+        'page-content',
+        'page-header',
+        'page-footer'
+      ]
+    }
+  }
 }
 

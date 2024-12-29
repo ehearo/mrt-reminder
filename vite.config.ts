@@ -32,32 +32,29 @@ export default defineConfig({
     // 完全禁用 source map
     sourcemap: false,
     // 禁用生成 .vue.js 文件
-    cssCodeSplit: false,
+    cssCodeSplit: true,
+    // 優化建構
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
+        // 分割 vendor
         manualChunks: {
           'vendor': [
             'vue',
             'vue-router',
-            'pinia',
-            '@vueuse/core'
-          ],
-          'app': [
-            './src/App.vue',
-            './src/main.ts',
-            './src/router/index.ts',
-            './src/stores/favorite.ts'
+            'pinia'
           ]
         },
-        // 將所有 JS 文件輸出到 wwwroot/js 目錄
-        entryFileNames: 'assets/js/[name].[hash].js',
+        // 設定快取策略
         chunkFileNames: 'assets/js/[name].[hash].js',
-        assetFileNames: ({ name = '' }) => {
-          if (name.endsWith('.css')) return 'assets/css/[name].[hash][extname]'
-          if (/\.(png|jpe?g|gif|svg|ico)$/i.test(name)) {
-            return 'assets/img/[name][extname]'
+        entryFileNames: 'assets/js/[name].[hash].js',
+        assetFileNames: ({name}) => {
+          if (/\.(css)$/.test(name ?? '')) {
+            return 'assets/css/[name].[hash][extname]'
           }
-          if (/\.(woff2?|eot|ttf|otf)$/.test(name)) return 'assets/fonts/[name].[hash][extname]'
+          if (/\.(png|jpe?g|gif|svg|ico)$/.test(name ?? '')) {
+            return 'assets/img/[name].[hash][extname]'
+          }
           return 'assets/[name].[hash][extname]'
         }
       }
@@ -67,15 +64,19 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
-      },
-      format: {
-        comments: false
+        drop_debugger: true,
+        pure_funcs: ['console.log'],
+        passes: 2
       }
     },
     // 確保 HTML 檔案被正確複製
     copyPublicDir: true
   },
   // 確保靜態檔案處理
-  publicDir: 'public'
+  publicDir: 'public',
+  // 優化依賴預構建
+  optimizeDeps: {
+    include: ['vue', 'vue-router', 'pinia'],
+    exclude: ['@vueuse/core']
+  }
 })

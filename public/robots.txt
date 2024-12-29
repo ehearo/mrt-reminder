@@ -7,5 +7,9 @@ Allow: /img/
 Allow: /css/
 Allow: /js/
 
+# 確保重要頁面可以被爬取
+Allow: /favorites
+Allow: /map
+
 # 指定 Sitemap 位置
 Sitemap: https://metro-taipei.site/sitemap.xml 
