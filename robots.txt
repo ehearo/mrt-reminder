@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
 
+# 禁止訪問重複內容
+Disallow: /*?*
+Disallow: /*?
+Disallow: /*/amp/
+Disallow: /amp/
+
 # 主要語言版本
 Allow: /zh-TW
 Allow: /en
@@ -12,6 +18,9 @@ Allow: /*.png
 Allow: /*.jpg
 Allow: /*.svg
 Allow: /*.ico
+
+# 禁止訪問 HTTP 版本
+Disallow: http://metro-taipei.site/
 
 # Sitemap
 Sitemap: https://metro-taipei.site/sitemap.xml

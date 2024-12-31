@@ -11,6 +11,7 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://metro-taipei.site"/>
   </url>
 
@@ -22,9 +23,21 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en"/>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja"/>
   </url>
 
-  <!-- 熱門路線頁面 - 板南線 -->
+  <!-- 日文首頁 -->
+  <url>
+    <loc>https://metro-taipei.site/ja</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en"/>
+  </url>
+
+  <!-- 熱門路線頁面 - 板南線（三語言） -->
   <url>
     <loc>https://metro-taipei.site/line/blue</loc>
     <lastmod>2024-01-20</lastmod>
@@ -32,19 +45,10 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/line/blue"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/line/blue"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/line/blue"/>
   </url>
 
-  <!-- 熱門路線頁面 - 淡水信義線 -->
-  <url>
-    <loc>https://metro-taipei.site/line/red</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/line/red"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/line/red"/>
-  </url>
-
-  <!-- 熱門站點 - 台北車站 -->
+  <!-- 熱門站點 - 台北車站（三語言） -->
   <url>
     <loc>https://metro-taipei.site/station/BL12</loc>
     <lastmod>2024-01-20</lastmod>
@@ -52,9 +56,10 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/station/BL12"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/station/BL12"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/station/BL12"/>
   </url>
 
-  <!-- 路線圖頁面 -->
+  <!-- 路線圖頁面（三語言） -->
   <url>
     <loc>https://metro-taipei.site/map</loc>
     <lastmod>2024-01-20</lastmod>
@@ -62,19 +67,10 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/map"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/map"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/map"/>
   </url>
 
-  <!-- 我的最愛頁面 -->
-  <url>
-    <loc>https://metro-taipei.site/favorites</loc>
-    <lastmod>2024-01-20</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/favorites"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/favorites"/>
-  </url>
-
-  <!-- 票價查詢頁面 -->
+  <!-- 票價查詢頁面（三語言） -->
   <url>
     <loc>https://metro-taipei.site/fare</loc>
     <lastmod>2024-01-20</lastmod>
@@ -82,9 +78,10 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/fare"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/fare"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/fare"/>
   </url>
 
-  <!-- 營運資訊頁面 -->
+  <!-- 營運資訊頁面（三語言） -->
   <url>
     <loc>https://metro-taipei.site/news</loc>
     <lastmod>2024-01-20</lastmod>
@@ -100,5 +97,6 @@
     </news:news>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/news"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/news"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/news"/>
   </url>
 </urlset> 
