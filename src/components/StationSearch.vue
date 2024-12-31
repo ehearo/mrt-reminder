@@ -9,7 +9,7 @@
     <input 
       v-model="query"
       type="text" 
-      placeholder="搜尋站點" 
+      :placeholder="$t('station.search')"
       class="w-full py-2 px-3 bg-transparent focus:outline-none"
       @input="handleSearch"
     >

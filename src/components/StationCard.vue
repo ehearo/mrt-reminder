@@ -11,7 +11,7 @@
             <div class="text-[9px] font-bold">{{ stationNumber }}</div>
           </div>
           <div class="flex items-center gap-2">
-            <h3 class="font-medium">{{ station.StationName }}</h3>
+            <h3 class="font-medium">{{ $t(`station.names.${station.StationCode}`) }}</h3>
             <span 
               v-if="station.LineName" 
               class="text-sm px-2 py-0.5 rounded-full text-white"
@@ -35,6 +35,7 @@
         class="p-2 transition-colors"
         :class="isFavorite ? 'text-yellow-500' : 'text-gray-400 hover:text-yellow-500'"
         @click="toggleFavorite"
+        :title="isFavorite ? $t('station.removeFromFavorites') : $t('station.addToFavorites')"
       >
         <i class="fas fa-star"></i>
       </button>
@@ -44,7 +45,7 @@
       <div class="grid grid-cols-3 gap-4 text-sm text-gray-500">
         <div v-for="train in nextTrains" :key="train.Time">
           <div class="text-xs">{{ train.Time }}</div>
-          <div class="truncate">往{{ train.destination }}</div>
+          <div class="truncate">{{ $t('station.towards', { destination: getDestinationName(train.destination) }) }}</div>
         </div>
       </div>
     </div>
@@ -55,6 +56,9 @@
 import type { Station, TrainInfo } from '@/types/metro'
 import { computed } from 'vue'
 import { useFavoriteStore } from '@/stores/favorite'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   station: Station
@@ -70,13 +74,38 @@ function toggleFavorite() {
 }
 
 const isArrivingSoon = computed(() => {
-  return props.nextTrains[0]?.arrivalTime === '即將到站'
+  return props.nextTrains[0]?.arrivalTime === t('station.arriving')
 })
 
+// 目的地名稱對應表
+const destinationMap: Record<string, string> = {
+  '南港展覽館': 'BL23',
+  '頂埔': 'BL01',
+  '亞東醫院': 'BL05',
+  '永寧': 'BL02',
+  '蘆洲': 'O54',
+  '迴龍': 'O21',
+  '南勢角': 'O01',
+  '新店': 'G01',
+  '松山': 'G20',
+  '淡水': 'R29',
+  '象山': 'R02',
+  '北投': 'R22'
+}
+
+// 獲取目的地翻譯名稱
+function getDestinationName(destination: string) {
+  const code = destinationMap[destination]
+  return code ? t(`station.names.${code}`) : destination
+}
+
 const nextTrainInfo = computed(() => {
-  if (!props.nextTrains.length) return '目前無班次'
+  if (!props.nextTrains.length) return t('station.noTrains')
   const next = props.nextTrains[0]
-  return `往${next.destination} - ${next.arrivalTime}`
+  return t('station.towardsWithTime', {
+    destination: getDestinationName(next.destination),
+    time: next.arrivalTime
+  })
 })
 
 // 從站點代碼中提取數字部分

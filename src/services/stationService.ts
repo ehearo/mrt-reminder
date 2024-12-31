@@ -1,24 +1,25 @@
 import type { MetroLine, Station, LineInfo, LineStation, TrainInfo } from '@/types/metro'
+import i18n from '@/i18n'
 
 // 路線資料配置
 const LINE_STATIONS: Record<MetroLine, LineStation> = {
     'blue': {
-        name: '板南線',
+        name: 'line.names.blue',
         color: '#0070BD',
         stations: []
     },
     'red': {
-        name: '淡水信義線',
+        name: 'line.names.red',
         color: '#E3002C',
         stations: []
     },
     'green': {
-        name: '松山新店線',
+        name: 'line.names.green',
         color: '#008659',
         stations: []
     },
     'orange': {
-        name: '中和新蘆線',
+        name: 'line.names.orange',
         color: '#F8B61C',
         stations: []
     },
@@ -83,7 +84,7 @@ export function getAvailableLines(): LineInfo[] {
         .filter(([id]) => id !== '')
         .map(([id, line]) => ({
             id: id as MetroLine,
-            name: line.name,
+            name: i18n.global.t(line.name),
             color: line.color
         }));
 }
@@ -98,7 +99,7 @@ export async function fetchStationTimetable(line: MetroLine): Promise<Station[]>
     return lineInfo.stations.map(station => ({
         ...station,
         LineColor: lineInfo.color,
-        LineName: lineInfo.name
+        LineName: i18n.global.t(lineInfo.name)
     }))
 }
 
@@ -154,14 +155,14 @@ function calculateArrivalTime(time: string): string {
 
     const diffMinutes = Math.floor((arrival.getTime() - now.getTime()) / 60000);
     
-    if (diffMinutes <= 1) return '即將到站';
-    if (diffMinutes < 60) return `${diffMinutes}分鐘`;
+    if (diffMinutes <= 1) return i18n.global.t('station.arriving');
+    if (diffMinutes < 60) return i18n.global.t('station.time.minute', { n: diffMinutes });
     
     const hours_diff = Math.floor(diffMinutes / 60);
     const minutes_diff = diffMinutes % 60;
     return minutes_diff > 0 
-        ? `${hours_diff}小時${minutes_diff}分鐘`
-        : `${hours_diff}小時`;
+        ? i18n.global.t('station.time.hourMinute', { h: hours_diff, m: minutes_diff })
+        : i18n.global.t('station.time.hour', { n: hours_diff });
 }
 
 /**
@@ -193,7 +194,7 @@ export async function getAllStations(): Promise<Station[]> {
         lineInfo.stations.map(station => ({
             ...station,
             LineColor: lineInfo.color,
-            LineName: lineInfo.name
+            LineName: i18n.global.t(lineInfo.name)
         }))
     )
     

@@ -9,6 +9,7 @@
         'ring-2 ring-offset-2': modelValue === line.id,
         [`ring-metro-${line.id}`]: modelValue === line.id
       }"
+      :aria-label="$t('line.select')"
     >
       <div 
         class="w-3 h-3 rounded-full"

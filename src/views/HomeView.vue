@@ -42,7 +42,7 @@
         <div class="bg-white rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
           <i class="fas fa-subway text-2xl text-gray-400" aria-hidden="true"></i>
         </div>
-        <p class="text-gray-500">請搜尋站點或選擇捷運路線</p>
+        <p class="text-gray-500">{{ $t('line.prompt') }}</p>
       </section>
     </main>
 
@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { MetroLine, Station } from '@/types/metro'
 import { fetchStationTimetable, getAvailableLines, getNextTrains, getLineColorByStation } from '@/services/stationService'
 import { useLineStore } from '@/stores/line'
@@ -61,10 +62,19 @@ import LineSelector from '@/components/LineSelector.vue'
 import StationCard from '@/components/StationCard.vue'
 import StationSearch from '@/components/StationSearch.vue'
 
+const { locale } = useI18n()
 const lineStore = useLineStore()
 const lineStations = ref<Station[]>([])
 const searchResults = ref<Station[]>([])
-const lines = getAvailableLines()
+const lines = ref(getAvailableLines())
+
+// 監聽語言變化，更新路線名稱
+watch(locale, () => {
+  lines.value = getAvailableLines()
+  if (selectedLine.value) {
+    handleLineSelect(selectedLine.value)
+  }
+})
 
 const selectedLine = computed({
   get: () => lineStore.selectedLine as MetroLine,

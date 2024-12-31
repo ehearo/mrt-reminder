@@ -9,7 +9,7 @@
         :class="{ 'text-metro-blue': isActive(item.path), 'text-gray-400': !isActive(item.path) }"
       >
         <i :class="['text-xl mb-1', item.icon]"></i>
-        <span class="text-xs">{{ item.label }}</span>
+        <span class="text-xs">{{ $t(item.label) }}</span>
       </router-link>
     </div>
   </nav>
@@ -21,9 +21,9 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const navItems = [
-  { path: '/', label: '路線', icon: 'fas fa-subway' },
-  { path: '/map', label: '路線圖', icon: 'fas fa-map' },
-  { path: '/favorites', label: '收藏', icon: 'fas fa-star' }
+  { path: '/', label: 'nav.lines', icon: 'fas fa-subway' },
+  { path: '/map', label: 'nav.map', icon: 'fas fa-map' },
+  { path: '/favorites', label: 'nav.favorites', icon: 'fas fa-star' }
 ]
 
 const isActive = (path: string) => route.path === path
