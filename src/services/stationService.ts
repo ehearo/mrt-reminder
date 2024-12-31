@@ -50,7 +50,7 @@ export function getLineFromStationCode(code: string): MetroLine {
  */
 async function loadStationData() {
     try {
-        const stationModules = import.meta.glob<{ default: Station }>('../Stations/*.json', { eager: true });
+        const stationModules = import.meta.glob<{ default: Station }>('../api-data/Stations/*.json', { eager: true });
         
         for (const [path, module] of Object.entries(stationModules)) {
             const station = module.default;
