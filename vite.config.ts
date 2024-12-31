@@ -9,6 +9,41 @@ export default defineConfig({
   plugins: [
     vue(),
     {
+      name: 'handle-api-data',
+      configureServer(server) {
+        server.middlewares.use(async (req, res, next) => {
+          if (req.url === '/api/save-data' && req.method === 'POST') {
+            let body = ''
+            req.on('data', chunk => { body += chunk })
+            req.on('end', () => {
+              try {
+                const data = JSON.parse(body)
+                const { lineId, content } = data
+                
+                // 確保目錄存在
+                const apiDataDir = path.resolve(__dirname, 'src/api-data')
+                if (!fs.existsSync(apiDataDir)) {
+                  fs.mkdirSync(apiDataDir, { recursive: true })
+                }
+                
+                // 寫入檔案
+                const filePath = path.resolve(apiDataDir, `${lineId}.json`)
+                fs.writeFileSync(filePath, JSON.stringify(content, null, 2))
+                
+                res.writeHead(200, { 'Content-Type': 'application/json' })
+                res.end(JSON.stringify({ success: true }))
+              } catch (error: any) {
+                res.writeHead(500, { 'Content-Type': 'application/json' })
+                res.end(JSON.stringify({ error: error.message }))
+              }
+            })
+          } else {
+            next()
+          }
+        })
+      }
+    },
+    {
       name: 'copy-google-verification',
       closeBundle() {
         // 複製 Google 驗證檔案
