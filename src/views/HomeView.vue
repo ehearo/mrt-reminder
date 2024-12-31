@@ -51,40 +51,48 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import type { MetroLine, Station } from '@/types/metro'
 import { fetchStationTimetable, getAvailableLines, getNextTrains, getLineColorByStation } from '@/services/stationService'
+import { useLineStore } from '@/stores/line'
 import MetroHeader from '@/components/MetroHeader.vue'
 import MetroNav from '@/components/MetroNav.vue'
 import LineSelector from '@/components/LineSelector.vue'
 import StationCard from '@/components/StationCard.vue'
 import StationSearch from '@/components/StationSearch.vue'
 
-const selectedLine = ref<MetroLine>('')
+const lineStore = useLineStore()
 const lineStations = ref<Station[]>([])
 const searchResults = ref<Station[]>([])
 const lines = getAvailableLines()
 
-// 顯示的站點列表
+const selectedLine = computed({
+  get: () => lineStore.selectedLine as MetroLine,
+  set: (value) => lineStore.setSelectedLine(value)
+})
+
+watch(() => lineStore.selectedLine, (newValue) => {
+  if (!newValue) {
+    lineStations.value = []
+    searchResults.value = []
+  }
+})
+
 const displayStations = computed(() => {
   return searchResults.value.length > 0 ? searchResults.value : lineStations.value
 })
 
-// 獲取站點所屬路線顏色
 function getLineColor(stationCode: string) {
   const station = displayStations.value.find(s => s.StationCode === stationCode)
   return station?.LineColor || getLineColorByStation(stationCode)
 }
 
-// 處理路線選擇
 async function handleLineSelect(line: MetroLine) {
   selectedLine.value = line
   lineStations.value = await fetchStationTimetable(line)
 }
 
-// 處理收藏切換
 function toggleFavorite(stationCode: string) {
-  // TODO: 實現收藏功能
   console.log('Toggle favorite:', stationCode)
 }
 </script> 

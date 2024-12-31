@@ -26,6 +26,7 @@ export interface Station {
     Timetables: Timetable[];  // 時刻表
     LineColor?: string;     // 路線顏色
     LineName?: string;      // 路線名稱
+    isTerminal?: boolean;   // 是否為底站
 }
 
 // 定義路線資訊（對外）
