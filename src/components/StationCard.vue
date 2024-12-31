@@ -4,9 +4,12 @@
       <div class="flex-1">
         <div class="flex items-center gap-3 mb-2">
           <div 
-            class="w-2 h-2 rounded-full"
-            :style="{ backgroundColor: station.LineColor || lineColor }"
-          ></div>
+            class="flex flex-col items-center justify-center w-[22px] h-[22px] border-2 rounded-[3px] leading-none text-black"
+            :style="{ borderColor: station.LineColor || lineColor }"
+          >
+            <div class="text-[8px] font-bold">{{ stationCode }}</div>
+            <div class="text-[9px] font-bold">{{ stationNumber }}</div>
+          </div>
           <div class="flex items-center gap-2">
             <h3 class="font-medium">{{ station.StationName }}</h3>
             <span 
@@ -74,5 +77,15 @@ const nextTrainInfo = computed(() => {
   if (!props.nextTrains.length) return '目前無班次'
   const next = props.nextTrains[0]
   return `往${next.destination} - ${next.arrivalTime}`
+})
+
+// 從站點代碼中提取數字部分
+const stationNumber = computed(() => {
+  return props.station.StationCode.replace(/[A-Za-z]/g, '')
+})
+
+// 從站點代碼中提取英文部分
+const stationCode = computed(() => {
+  return props.station.StationCode.replace(/[0-9]/g, '')
 })
 </script> 
