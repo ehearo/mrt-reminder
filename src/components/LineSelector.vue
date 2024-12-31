@@ -24,7 +24,7 @@ import type { MetroLine, LineInfo } from '@/types/metro'
 
 defineProps<{
   lines: LineInfo[]
-  modelValue: MetroLine
+  modelValue: MetroLine | null
 }>()
 
 defineEmits<{
