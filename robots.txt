@@ -1,15 +1,20 @@
 User-agent: *
 Allow: /
 
-# 允許所有靜態資源
-Allow: /assets/
-Allow: /img/
-Allow: /css/
-Allow: /js/
+# 主要語言版本
+Allow: /zh-TW
+Allow: /en
 
-# 確保重要頁面可以被爬取
-Allow: /favorites
-Allow: /map
+# 靜態資源
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+Allow: /*.ico
 
-# 指定 Sitemap 位置
-Sitemap: https://metro-taipei.site/sitemap.xml 
+# Sitemap
+Sitemap: https://metro-taipei.site/sitemap.xml
+
+# 爬蟲速率
+Crawl-delay: 1 
