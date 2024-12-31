@@ -64,7 +64,9 @@ const isLangMenuOpen = ref(false)
 
 const locales = {
   'zh-TW': '中文',
-  'en': 'English'
+  'en': 'English',
+  'ja': '日本語',
+  'ko': '한국어'
 }
 
 const currentLocaleDisplay = computed(() => locales[currentLocale.value as keyof typeof locales])
