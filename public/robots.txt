@@ -1,15 +1,29 @@
 User-agent: *
 Allow: /
 
-# 允許所有靜態資源
-Allow: /assets/
-Allow: /img/
-Allow: /css/
-Allow: /js/
+# 禁止訪問重複內容
+Disallow: /*?*
+Disallow: /*?
+Disallow: /*/amp/
+Disallow: /amp/
 
-# 確保重要頁面可以被爬取
-Allow: /favorites
-Allow: /map
+# 主要語言版本
+Allow: /zh-TW
+Allow: /en
 
-# 指定 Sitemap 位置
-Sitemap: https://metro-taipei.site/sitemap.xml 
+# 靜態資源
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+Allow: /*.ico
+
+# 禁止訪問 HTTP 版本
+Disallow: http://metro-taipei.site/
+
+# Sitemap
+Sitemap: https://metro-taipei.site/sitemap.xml
+
+# 爬蟲速率
+Crawl-delay: 1 
