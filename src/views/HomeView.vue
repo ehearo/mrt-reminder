@@ -4,7 +4,7 @@
     
     <main class="page-content" role="main">
       <!-- 搜尋組件 -->
-      <section aria-label="站點搜尋">
+      <section aria-label="站點搜尋" class="mb-6">
         <StationSearch v-model:stations="searchResults" />
       </section>
 
@@ -45,24 +45,23 @@
         <p class="text-gray-500">{{ $t('line.prompt') }}</p>
       </section>
     </main>
-
-    <MetroNav />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import type { MetroLine, Station } from '@/types/metro'
 import { fetchStationTimetable, getAvailableLines, getNextTrains, getLineColorByStation } from '@/services/stationService'
 import { useLineStore } from '@/stores/line'
 import MetroHeader from '@/components/MetroHeader.vue'
-import MetroNav from '@/components/MetroNav.vue'
 import LineSelector from '@/components/LineSelector.vue'
 import StationCard from '@/components/StationCard.vue'
 import StationSearch from '@/components/StationSearch.vue'
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
+const router = useRouter()
 const lineStore = useLineStore()
 const lineStations = ref<Station[]>([])
 const searchResults = ref<Station[]>([])
@@ -91,6 +90,14 @@ watch(() => lineStore.selectedLine, (newValue) => {
 const displayStations = computed(() => {
   return searchResults.value.length > 0 ? searchResults.value : lineStations.value
 })
+
+// 生成本地化路徑
+const localizedPath = (path: string) => {
+  if (locale.value === 'zh-TW') {
+    return path
+  }
+  return `/${locale.value}${path}`
+}
 
 function getLineColor(stationCode: string) {
   const station = displayStations.value.find(s => s.StationCode === stationCode)

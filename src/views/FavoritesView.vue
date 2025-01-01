@@ -18,7 +18,6 @@
         <p class="text-gray-500">{{ $t('station.noFavorites') }}</p>
       </div>
     </main>
-    <MetroNav />
   </div>
 </template>
 
@@ -28,7 +27,6 @@ import { useFavoriteStore } from '@/stores/favorite'
 import { getNextTrains, getLineFromStationCode } from '@/services/stationService'
 import type { MetroLine } from '@/types/metro'
 import MetroHeader from '@/components/MetroHeader.vue'
-import MetroNav from '@/components/MetroNav.vue'
 import StationCard from '@/components/StationCard.vue'
 
 const favoriteStore = useFavoriteStore()

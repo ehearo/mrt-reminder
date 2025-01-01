@@ -4,6 +4,31 @@
     "search": "搜尋車站",
     "favorites": "我的最愛"
   },
+  "error": {
+    "pageNotFound": "找不到頁面",
+    "pageNotFoundDesc": "抱歉，您要找的頁面不存在或已被移除。",
+    "serverError": "伺服器錯誤",
+    "serverErrorDesc": "抱歉，伺服器發生錯誤，請稍後再試。"
+  },
+  "common": {
+    "backToHome": "返回首頁",
+    "loading": "載入中...",
+    "error": "發生錯誤",
+    "viewAll": "查看全部"
+  },
+  "fare": {
+    "title": "票價資訊",
+    "introDesc": "查詢起訖站票價與優惠方案",
+    "calculator": "票價試算",
+    "from": "起點站",
+    "to": "終點站",
+    "selectStation": "請選擇車站",
+    "singleJourney": "單程票價",
+    "info": "票價說明",
+    "info1": "票價依照行駛距離計算，分為 20 元、25 元、30 元、35 元、40 元五種票價。",
+    "info2": "65 歲以上長者、身心障礙者及其必要陪伴者可享有半價優惠。",
+    "info3": "使用電子票證搭乘捷運享有優惠，轉乘公車可再享有轉乘優惠。"
+  },
   "station": {
     "search": "搜尋車站...",
     "noResults": "找不到車站",
@@ -14,6 +39,7 @@
     "towards": "往{destination}",
     "towardsWithTime": "往{destination} - {time}",
     "noFavorites": "尚未收藏任何站點",
+    "favorites": "收藏站點",
     "time": {
       "minute": "{n}分鐘",
       "hour": "{n}小時",
@@ -121,6 +147,8 @@
   "line": {
     "select": "選擇路線",
     "prompt": "請搜尋站點或選擇捷運路線",
+    "intro": "路線介紹",
+    "introDesc": "查看台北捷運各路線資訊與車站位置",
     "names": {
       "blue": "板南線",
       "red": "淡水信義線",
@@ -131,10 +159,7 @@
   "nav": {
     "lines": "路線",
     "map": "路線圖",
-    "favorites": "收藏"
-  },
-  "common": {
-    "loading": "載入中...",
-    "error": "發生錯誤"
+    "favorites": "收藏",
+    "more": "更多"
   }
 } 

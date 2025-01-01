@@ -4,6 +4,31 @@
     "search": "フリーワード検索",
     "favorites": "お気に入り"
   },
+  "error": {
+    "pageNotFound": "ページが見つかりません",
+    "pageNotFoundDesc": "申し訳ありませんが、お探しのページは存在しないか、削除されました。",
+    "serverError": "サーバーエラー",
+    "serverErrorDesc": "申し訳ありませんが、サーバーエラーが発生しました。後でもう一度お試しください。"
+  },
+  "common": {
+    "backToHome": "ホームに戻る",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "viewAll": "すべて表示"
+  },
+  "fare": {
+    "title": "運賃情報",
+    "introDesc": "駅間の運賃と割引を確認",
+    "calculator": "運賃計算",
+    "from": "出発駅",
+    "to": "到着駅",
+    "selectStation": "駅を選択",
+    "singleJourney": "片道運賃",
+    "info": "運賃案内",
+    "info1": "運賃は乗車距離に応じて計算され、20元、25元、30元、35元、40元の5段階です。",
+    "info2": "65歳以上の高齢者、障害者とその必要な介助者は50%割引が適用されます。",
+    "info3": "電子マネーを使用すると運賃割引があり、バスへの乗り換えでさらに割引が適用されます。"
+  },
   "station": {
     "search": "駅を選択するか、直接検索してください",
     "noResults": "該当する駅が見つかりません",
@@ -14,6 +39,7 @@
     "towards": "{destination}方面",
     "towardsWithTime": "{destination}方面 - {time}",
     "noFavorites": "お気に入りの駅が登録されていません",
+    "favorites": "お気に入りの駅",
     "time": {
       "minute": "{n}分",
       "hour": "{n}時間",
@@ -122,6 +148,8 @@
   "line": {
     "select": "路線を選択",
     "prompt": "駅を選択するか、直接図から選んでください",
+    "intro": "路線案内",
+    "introDesc": "台北メトロの路線と駅の情報を確認",
     "names": {
       "blue": "板南線",
       "red": "淡水信義線",
@@ -132,10 +160,7 @@
   "nav": {
     "lines": "路線図",
     "map": "路線図及び各駅情報",
-    "favorites": "お気に入り"
-  },
-  "common": {
-    "loading": "読み込み中...",
-    "error": "エラーが発生しました"
+    "favorites": "お気に入り",
+    "more": "その他"
   }
 } 
