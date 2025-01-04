@@ -39,24 +39,57 @@
 
   <!-- 熱門路線頁面 - 板南線（三語言） -->
   <url>
-    <loc>https://metro-taipei.site/line/blue</loc>
+    <loc>https://metro-taipei.site/lines/blue</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/line/blue"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/line/blue"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/line/blue"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/lines/blue"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/lines/blue"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/lines/blue"/>
+  </url>
+
+  <!-- 熱門路線頁面 - 淡水信義線（三語言） -->
+  <url>
+    <loc>https://metro-taipei.site/lines/red</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/lines/red"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/lines/red"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/lines/red"/>
+  </url>
+
+  <!-- 熱門路線頁面 - 松山新店線（三語言） -->
+  <url>
+    <loc>https://metro-taipei.site/lines/green</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/lines/green"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/lines/green"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/lines/green"/>
+  </url>
+
+  <!-- 熱門路線頁面 - 中和新蘆線（三語言） -->
+  <url>
+    <loc>https://metro-taipei.site/lines/orange</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/lines/orange"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/lines/orange"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/lines/orange"/>
   </url>
 
   <!-- 熱門站點 - 台北車站（三語言） -->
   <url>
-    <loc>https://metro-taipei.site/station/BL12</loc>
+    <loc>https://metro-taipei.site/stations/BL12</loc>
     <lastmod>2024-01-20</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/station/BL12"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/station/BL12"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/station/BL12"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/stations/BL12"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://metro-taipei.site/en/stations/BL12"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://metro-taipei.site/ja/stations/BL12"/>
   </url>
 
   <!-- 路線圖頁面（三語言） -->
