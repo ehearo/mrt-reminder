@@ -28,6 +28,47 @@ direction_mapping = {
 
 line_common_data = {}
 
+def save_station_data(line_id, content):
+    """
+    保存車站資訊到對應的 JSON 檔案
+    """
+    try:
+        # 確保目錄存在
+        if not os.path.exists(dataDir):
+            os.makedirs(dataDir)
+
+        # 保存原始資料
+        file_path = os.path.join(dataDir, f"{line_id}.json")
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(content, f, ensure_ascii=False, indent=2)
+
+        # 轉換資料
+        all_data = []
+        for line_code in ['R', 'G', 'O', 'BL']:
+            input_file = os.path.join(dataDir, f"{line_code}.json")
+            if os.path.exists(input_file):
+                with open(input_file, 'r', encoding='utf-8') as f:
+                    line_data = json.load(f)
+                    all_data.extend(line_data)
+
+        # 更新共用資料
+        line_ids = set(map(lambda x: x["LineID"], all_data))
+        for line_id in line_ids:
+            line_datas = list(filter(lambda x: x["LineID"] == line_id, all_data))
+            patterns = set(map(lambda x: x["ServiceDay"]["ServiceTag"], line_datas))
+            line_common_data[line_id] = {"service_day_patterns": list(patterns)}
+
+        # 轉換每個車站的資料
+        station_ids = {s["StationID"] for s in all_data}
+        for station_id in station_ids:
+            if station_id.endswith("A"):
+                continue
+            ProcessTimeTable(station_id, all_data)
+
+        return True
+    except Exception as e:
+        print(f"Error saving station data: {str(e)}")
+        return False
 
 def ProcessTimeTable(station_id, all_data):
     # 從完整資料中，先濾出相關車站的部分
