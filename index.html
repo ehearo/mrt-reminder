@@ -2,33 +2,22 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/img/metro-logo.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/svg+xml" href="/metro-logo.svg" />
+    
+    <!-- PWA icons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/metro-logo.svg" color="#0070BD">
+    <meta name="theme-color" content="#0070BD">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>台北捷運即時動態查詢 | 捷運時刻表 | 台北捷運到站時間</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="台北捷運即時動態查詢系統，提供台北車站、西門站、板橋站等即時到站時間查詢。台北捷運時刻表、票價、路線圖查詢，板南線、淡水信義線、松山新店線、中和新蘆線轉乘資訊即時掌握。">
-    <meta name="keywords" content="台北捷運,捷運時刻表,捷運到站時間,台北車站,西門站,板橋站,台北捷運票價,捷運路線圖,台北地鐵,台北車站捷運,捷運查詢,台北捷運app,台北捷運路線">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://metro-taipei.site/">
-    <meta property="og:title" content="台北捷運即時動態查詢 | 時刻表 | 路線圖">
-    <meta property="og:description" content="即時查詢台北捷運各站到站時間、轉乘資訊，讓您的通勤更便利。支援台北車站、板橋站、市政府站等熱門站點查詢。">
-    <meta property="og:image" content="/og-image.png">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="台北捷運即時動態查詢 | 捷運時刻表">
-    <meta name="twitter:description" content="即時查詢台北捷運各站到站時間、轉乘資訊。提供台北車站、板橋站、市政府站等熱門站點即時動態。">
-    <meta name="twitter:image" content="/og-image.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- 強制 HTTPS -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https: 'unsafe-inline' 'unsafe-eval'">
+    <!-- 這裡的內容會被 seo.ts 動態替換 -->
     
     <!-- iOS Web App 設定 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,109 +25,14 @@
     <meta name="apple-mobile-web-app-title" content="Metro Taipei">
     
     <!-- iOS 圖標 -->
-    <link rel="apple-touch-icon" href="/img/metro-icon-180.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/metro-icon-152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/metro-icon-180.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="/img/metro-icon-167.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-startup-image" href="/splash-screen.png">
     
-    <!-- 啟動畫面 -->
-    <link rel="apple-touch-startup-image" href="/img/metro-splash.png">
-    
-    <!-- 延遲載入非關鍵 CSS -->
-    <link rel="preload" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
-          as="style" 
-          onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    </noscript>
-    
-    <!-- Google Search Console 驗證 -->
-    <meta name="google-site-verification" content="ILlWrwdFzxoec62-Li9t9UpGTZHw3F21QoIsLBjFXCU" />
-
-    <!-- 延遲載入 Google Analytics -->
-    <script>
-      // 等待頁面完全載入後再載入 GA
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          const script = document.createElement('script');
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-GSN4XE8ME6';
-          script.async = true;
-          document.head.appendChild(script);
-          
-          script.onload = function() {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-GSN4XE8ME6', {
-              transport_type: 'beacon',
-              send_page_view: false
-            });
-          };
-        }, 2000);  // 延遲 2 秒載入
-      });
-    </script>
-
-    <!-- 添加語言標記 -->
-    <meta http-equiv="content-language" content="zh-TW">
-    
-    <!-- 添加作者資訊 -->
-    <meta name="author" content="Metro Taipei">
-
-    <link rel="canonical" href="https://metro-taipei.site/" />
-    <link rel="alternate" hreflang="zh-TW" href="https://metro-taipei.site/" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- 預載關鍵資源 -->
-    <link rel="preload" href="/img/metro-logo.svg" as="image" fetchpriority="high">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
   <body>
-    <script>
-      (function(){
-        const redirect = sessionStorage.redirect;
-        if (redirect) {
-          delete sessionStorage.redirect;
-          window.history.replaceState(null, null, redirect);
-        }
-      })();
-    </script>
     <div id="app"></div>
-    <script type="module" src="./src/main.ts"></script>
-    <!-- 結構化數據 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "台北捷運即時動態查詢",
-      "description": "台北捷運即時動態查詢系統",
-      "applicationCategory": "TransitApplication",
-      "operatingSystem": "All",
-      "url": "https://metro-taipei.site",
-      "author": {
-        "@type": "Organization",
-        "name": "Metro Taipei",
-        "url": "https://metro-taipei.site"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TWD"
-      },
-      "mainEntity": {
-        "@type": "WebSite",
-        "name": "台北捷運即時動態查詢",
-        "url": "https://metro-taipei.site",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://metro-taipei.site/search?q={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      }
-    }
-    </script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

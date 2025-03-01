@@ -26,20 +26,40 @@
 - Pinia 狀態管理
 - Vue Router
 
+## 開發設定
+
+### 安裝相依套件
+
+```bash
+npm install
+```
+
+### 開發環境運行
+
+```bash
+npm run dev
+```
+
+### 建置專案
+
+```bash
+npm run build
+```
+
+### 資料轉換指令
+
+在專案根目錄執行以下指令來轉換車站資料：
+
+```bash
+python src/api-data/convert_to_stations.py
+```
+
 ## 💻 瀏覽器支援
 
 - Chrome/Edge >= 90
 - Safari >= 14
 - Firefox >= 90
 - iOS Safari >= 14
-
-## 📝 授權說明
-
-本專案採用 MIT 授權條款。
-
-## 👨‍💻 開發者
-
-- ehearo
 
 ## 🚀 部署資訊
 
@@ -49,3 +69,11 @@
 - 部署到 gh-pages 分支
 
 訪問網址：https://metro-taipei.site
+
+## 📝 授權說明
+
+本專案採用 MIT 授權條款。
+
+## 👨‍💻 開發者
+
+- ehearo

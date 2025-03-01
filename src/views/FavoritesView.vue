@@ -15,10 +15,9 @@
         <div class="bg-white rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
           <i class="fas fa-star text-2xl text-gray-400"></i>
         </div>
-        <p class="text-gray-500">尚未收藏任何站點</p>
+        <p class="text-gray-500">{{ $t('station.noFavorites') }}</p>
       </div>
     </main>
-    <MetroNav />
   </div>
 </template>
 
@@ -28,7 +27,6 @@ import { useFavoriteStore } from '@/stores/favorite'
 import { getNextTrains, getLineFromStationCode } from '@/services/stationService'
 import type { MetroLine } from '@/types/metro'
 import MetroHeader from '@/components/MetroHeader.vue'
-import MetroNav from '@/components/MetroNav.vue'
 import StationCard from '@/components/StationCard.vue'
 
 const favoriteStore = useFavoriteStore()
